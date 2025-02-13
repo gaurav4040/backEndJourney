@@ -1,0 +1,7 @@
+Event Driven
+single Threaded
+V8 vs libuv
+Node Runtime
+Event Loop 
+Async Code
+Blocking Code
