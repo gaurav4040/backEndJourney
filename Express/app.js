@@ -1,5 +1,5 @@
 //core module
-const http = require('http');
+// const http = require('http');
 //external module
 const express = require('express');
 //local module
@@ -16,10 +16,13 @@ app.use((req,res,next)=>{
     res.send("<p>welcome jaanu</p>")
 });
 
-const server=http.createServer(app);
-
-
 const PORT = 3000;
- server.listen(PORT,()=>{
+ app.listen(PORT,()=>{
      console.log(`server is running on http:://localhost:${PORT}`)
  }); 
+
+// const server=http.createServer(app);
+// const PORT = 3000;
+//  server.listen(PORT,()=>{
+//      console.log(`server is running on http:://localhost:${PORT}`)
+//  }); 
