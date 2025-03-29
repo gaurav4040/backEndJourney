@@ -1,0 +1,7 @@
+parsing requests
+express router
+adding 404
+common paths 
+adding html files
+serving html files
+using file helper

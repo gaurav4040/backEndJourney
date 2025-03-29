@@ -7,15 +7,15 @@ const requestHandler=require('./user');
 
 const app= express();
 
-app.use((req,res,next)=>{
+app.use("/",(req,res,next)=>{
     console.log("came in first middleware",req.url,req.method);
     next();
 });
-app.use((req,res,next)=>{
+app.use("/submit-details",(req,res,next)=>{
     console.log("came in second middleware",req.url,req.method);
     res.send("<p>welcome jaanu</p>")
 });
-
+    
 const PORT = 3000;
  app.listen(PORT,()=>{
      console.log(`server is running on http:://localhost:${PORT}`)
