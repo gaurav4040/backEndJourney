@@ -5,14 +5,18 @@ const rootDir=require('../utils/pathUtil')
 
 hostRouter.get("/add-home",(req,res,next)=>{
     console.log(req.url,req.method);
-    res.sendFile(path.join(rootDir,'views','addHome.html'))
+    res.render('addHome',{pageTitle:'add home to airbnb'})
 }); 
+
+const registeredHomes=[];
 
 hostRouter.post("/add-home",(req,res,next)=>{
     console.log(req.body);
+    registeredHomes.push({houseName:req.body.houseName})
     // res.send(`<h1> registered sucessfully</h1>`)
-    res.sendFile(path.join(rootDir,'views','homeAdded.html'))
+    res.render('homeAdded',{pageTitle:'home added successfully'})
 }); 
 
 
-module.exports = hostRouter;
+exports.hostRouter = hostRouter;
+exports.registeredHomes = registeredHomes;
