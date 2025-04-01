@@ -1,13 +1,13 @@
-<%- include('partials/head') %>
+<%- include('../partials/head') %>
   </head>
   <body>
-    <%- include('partials/nav') %>
+    <%- include('../partials/nav') %>
     <main class="container mx-auto bg-white shadow-lg rounded-lg p-6 mt-8 max-w-7xl">
       <h2 class="text-2xl text-red-500 font-bold text-center mb-4">
         Here are our registered homes:
       </h2>
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-        <% registeredHomes.forEach(home => { %>
+        <% registeredHomes.forEach((home) => { %>
           <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
             <div class="relative">
               <img src="<%= home.photoUrl %>" alt="<%= home.houseName %>" class="w-full h-32 object-cover">
@@ -32,7 +32,7 @@
                   $<%= home.price %>
                   <span class="text-xs text-gray-500 font-normal">/night</span>
                 </div>
-                <button class="bg-red-500 text-white px-2 py-1 rounded text-sm hover:bg-red-600 transition duration-300">
+                <button class="bg-green-500 text-white px-2 py-1 rounded text-sm hover:bg-green-700 transition duration-300">
                   Book
                 </button>
               </div>

@@ -1,0 +1,10 @@
+[
+    {
+        "houseName": "Example House",
+        "photoUrl": "example.jpg",
+        "rating": "4.5",
+        "location": "Example Location",
+        "price": "100"
+    }
+  
+]

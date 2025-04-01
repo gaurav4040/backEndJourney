@@ -4,15 +4,43 @@
         <li>
           <a
             href="/"
-            class="<%= currentPage === 'Home' ? 'bg-red-400': 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
-            >Home</a
+            class="<%= currentPage === 'index' ? 'bg-red-400': 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
+            >Index</a
           >
         </li>
         <li>
           <a
             href="/host/add-home"
-            class="<%= currentPage === 'addhome' ? 'bg-red-400': 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
+            class="<%= currentPage === 'addHome' ? 'bg-red-400': 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
             >Add Home</a
+          >
+        </li>
+        <li>
+          <a
+            href="/bookings"
+            class="<%= currentPage === 'bookings' ? 'bg-red-400': 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
+            >Bookings</a
+          >
+        </li>
+        <li>
+          <a
+            href="/favorites"
+            class="<%= currentPage === 'favorites' ? 'bg-red-400': 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
+            >Favorites</a
+          >
+        </li>
+        <li>
+          <a
+            href="/homes"
+            class="<%= currentPage === 'Home' ? 'bg-red-400': 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
+            >HomeList</a
+          >
+        </li>
+        <li>
+          <a
+            href="/host/host-home-list"
+            class="<%= currentPage === 'HostHomes' ? 'bg-red-400': 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
+            >Host Homes</a
           >
         </li>
       </ul>
