@@ -1,0 +1,14 @@
+add-on topics:-
+
+topic_1 == MVC(model view controller){
+                seperation of concerns
+                adding first controller
+                adding all controllers
+                adding 404 controller
+                adding models
+                writing data to files
+                nodemon causing problems
+                reading data from files
+            }
+
+

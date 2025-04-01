@@ -7,7 +7,10 @@ const userRouter= express.Router();
 
 userRouter.get("/",(req,res,next)=>{
     console.log(req.url,req.method);
-    res.render('home',{registeredHomes:registeredHomes,pageTitle:'airbnb home'});
+    res.render('home',{
+        registeredHomes:registeredHomes,pageTitle:'airbnb home',
+        currentPage:'Home'
+    });
 });
 
 

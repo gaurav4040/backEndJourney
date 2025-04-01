@@ -13,7 +13,12 @@ app.use("/",(req,res,next)=>{
 });
 app.use("/submit-details",(req,res,next)=>{
     console.log("came in second middleware",req.url,req.method);
-    res.send("<p>welcome jaanu</p>")
+    res.status(404).render('404Error',
+        {
+            pageTitle:'page not found',
+            currentPage:'home'
+        }
+    )
 });
     
 const PORT = 3000;
