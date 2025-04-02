@@ -1,6 +1,7 @@
 add-on topics:-
 
-topic_1 == MVC(model view controller){
+topic_1 == MVC(model view controller)
+            {
                 seperation of concerns
                 adding first controller
                 adding all controllers
@@ -12,3 +13,15 @@ topic_1 == MVC(model view controller){
             }
 
 
+topic_2 == Dynamic Path & Model deep-dive
+            {
+                what are dynamic paths
+                showing real home data
+                adding favorites feature
+                adding favorites model
+                edit home:adding feature skeleton
+                edit home:showing existing data
+                edit home:handing edit request
+                adding delete feature
+                remove home from favorites
+            }

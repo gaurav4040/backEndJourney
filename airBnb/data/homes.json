@@ -1,10 +1,26 @@
 [
     {
-        "houseName": "Example House",
-        "photoUrl": "example.jpg",
+        "id": "1",
+        "houseName": "zwire",
+        "photoUrl": "/images/house1.png",
         "rating": "4.5",
-        "location": "Example Location",
-        "price": "100"
+        "location": "goa",
+        "price": "3406"
+    },
+    {
+        "id": "2",
+        "houseName": "bloom",
+        "photoUrl": "/images/house2.png",
+        "rating": "3.5",
+        "location": "delhi",
+        "price": "4458"
+    },
+    {
+        "houseName": "gerish",
+        "price": "5998",
+        "location": "gurugram",
+        "rating": "5",
+        "photoUrl": "/images/house3.png",
+        "id": "0.7296775362288499"
     }
-  
 ]
