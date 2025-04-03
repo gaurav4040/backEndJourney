@@ -649,16 +649,8 @@ video {
   margin-top: 5rem;
 }
 
-.mt-6 {
-  margin-top: 1.5rem;
-}
-
 .mt-8 {
   margin-top: 2rem;
-}
-
-.inline-block {
-  display: inline-block;
 }
 
 .flex {
@@ -679,6 +671,10 @@ video {
 
 .h-4 {
   height: 1rem;
+}
+
+.h-40 {
+  height: 10rem;
 }
 
 .h-48 {

@@ -25,3 +25,19 @@ topic_2 == Dynamic Path & Model deep-dive
                 adding delete feature
                 remove home from favorites
             }
+
+
+topic_3 == Introduction to SQL
+            {
+                what is DB
+                Introduction to SQL DB
+                Introduction to NoSQL DB
+                SQL vs NoSQL
+                Installing MySQL
+                connecting App to DB
+                creating homes Table
+                querying homes in App
+                Adding DB in Models
+                Adding Home in Models
+                Implementing Model using Where
+            }

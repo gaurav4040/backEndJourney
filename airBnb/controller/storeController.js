@@ -1,8 +1,12 @@
+//commenting previous code which used in file writing database(fake database eg.home.json) ,new code for real database(sql,mongoDB)
+
 const Favorite = require("../models/favorite");
 const Home = require("../models/home");
 
+
 exports.getIndex = (req, res, next) => {
-  Home.fetchAll((registeredHomes) => {
+  
+  Home.fetchAll().then(([registeredHomes,fields])=>{
     res.render("store/index", {
       registeredHomes: registeredHomes,
       pageTitle: "airbnb home",
@@ -11,8 +15,19 @@ exports.getIndex = (req, res, next) => {
   });
 };
 
+// exports.getIndex = (req, res, next) => {
+//   Home.fetchAll((registeredHomes) => {
+//     res.render("store/index", {
+//       registeredHomes: registeredHomes,
+//       pageTitle: "airbnb home",
+//       currentPage: "index",
+//     });
+//   });
+// };
+
+
 exports.getHomes = (req, res, next) => {
-  Home.fetchAll((registeredHomes) => {
+  Home.fetchAll().then(([registeredHomes,fields])=>{
     res.render("store/homeList", {
       registeredHomes: registeredHomes,
       pageTitle: "Home List",
@@ -20,6 +35,17 @@ exports.getHomes = (req, res, next) => {
     });
   });
 };
+
+
+// exports.getHomes = (req, res, next) => {
+//   Home.fetchAll((registeredHomes) => {
+//     res.render("store/homeList", {
+//       registeredHomes: registeredHomes,
+//       pageTitle: "Home List",
+//       currentPage: "Home",
+//     });
+//   });
+// };
 
 
 
@@ -30,10 +56,9 @@ exports.getBookings=(req, res, next) => {
     });
 };
 
-
 exports.getFavoriteList=(req, res, next) => {
   Favorite.getFavorites((favorites)=>{
-    Home.fetchAll((registeredHomes) => {
+    Home.fetchAll().then(([registeredHomes,fields])=>{
       const favoriteHomes=registeredHomes.filter(home=>favorites.includes(home.id))
       res.render("store/favoriteList", {
         favoriteHomes: favoriteHomes,
@@ -43,6 +68,18 @@ exports.getFavoriteList=(req, res, next) => {
     });
   });
 };
+// exports.getFavoriteList=(req, res, next) => {
+//   Favorite.getFavorites((favorites)=>{
+//     Home.fetchAll((registeredHomes) => {
+//       const favoriteHomes=registeredHomes.filter(home=>favorites.includes(home.id))
+//       res.render("store/favoriteList", {
+//         favoriteHomes: favoriteHomes,
+//         pageTitle: "my favorites",
+//         currentPage: "favorites",
+//       });
+//     });
+//   });
+// };
 
 exports.postAddToFavorite=(req,res,next)=>{
 
@@ -70,12 +107,15 @@ exports.postRemoveFavorite=(req,res,next)=>{
 exports.getHomeDetails = (req, res, next) => {
   const homeId =req.params.homeId;
 
-  Home.findById(homeId,home=>{
+  Home.findById(homeId).then(([homes])=>{
+
+    const home = homes[0];
+
     if(!home){
+      console.log('home not found');
       res.redirect("/homes");
     }
-    else{
-
+    else{ 
       res.render("store/homeDetails",
         {
           home:home,
@@ -87,3 +127,25 @@ exports.getHomeDetails = (req, res, next) => {
   })
 
 };
+
+// exports.getHomeDetails = (req, res, next) => {
+//   const homeId =req.params.homeId;
+
+//   Home.findById(homeId ,home=>{
+//     if(!home){
+//       console.log('home not found');
+//       res.redirect("/homes");
+//     }
+//     else{
+
+//       res.render("store/homeDetails",
+//         {
+//           home:home,
+//           pageTitle:"Home Details",
+//           currentPage:"Home"
+//         }
+//       );
+//     }
+//   })
+
+// };

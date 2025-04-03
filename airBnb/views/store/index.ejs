@@ -6,11 +6,11 @@
       <h2 class="text-2xl text-red-500 font-bold text-center mb-4">
         Welcome to airbnb 🤩🥳 
       </h2>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         <% registeredHomes.forEach((home) => { %>
           <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
             <div class="relative">
-              <img src="<%= home.photoUrl %>" alt="<%= home.houseName %>" class="w-full h-32 object-cover">
+              <img src="<%= home.photoUrl %>" alt="<%= home.houseName %>" class="w-full h-36 object-cover">
               <div class="absolute top-2 right-2 bg-white px-2 py-0.5 rounded-lg shadow text-sm">
                 <span class="text-yellow-500"><%= home.rating %>⭐</span>
               </div>

@@ -4,6 +4,9 @@ const storeRouter = require("./routes/storeRouter");
 const { hostRouter } = require("./routes/hostRouter");
 const rootDir = require("./utils/pathUtil");
 const errorsController = require("./controller/Error");
+
+ 
+
 const app = express();
 
 app.set("view engine", "ejs");
