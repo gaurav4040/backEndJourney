@@ -32,6 +32,11 @@
                   $<%= home.price %>
                   <span class="text-xs text-gray-500 font-normal">/night</span>
                 </div>
+                <form action="/favorites/delete/<%=home.id%>" method="POST">
+                  <button class="bg-red-500 text-white px-2 py-1 rounded text-sm hover:bg-red-700 transition duration-300">
+                    Remove
+                  </button>
+                </form>
                 <button class="bg-green-500 text-white px-2 py-1 rounded text-sm hover:bg-green-700 transition duration-300">
                   Book
                 </button>

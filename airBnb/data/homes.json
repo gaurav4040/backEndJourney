@@ -1,26 +1,34 @@
 [
     {
-        "id": "1",
-        "houseName": "zwire",
-        "photoUrl": "/images/house1.png",
-        "rating": "4.5",
-        "location": "goa",
-        "price": "3406"
-    },
-    {
-        "id": "2",
         "houseName": "bloom",
-        "photoUrl": "/images/house2.png",
-        "rating": "3.5",
+        "price": "5547",
         "location": "delhi",
-        "price": "4458"
+        "rating": "3.4",
+        "photoUrl": "\\images\\house1.png",
+        "id": "0.05105401376383556"
     },
     {
         "houseName": "gerish",
-        "price": "5998",
+        "price": "6882",
         "location": "gurugram",
-        "rating": "5",
-        "photoUrl": "/images/house3.png",
-        "id": "0.7296775362288499"
+        "rating": "4.1",
+        "photoUrl": "\\images\\house2.png",
+        "id": "0.627941460857959"
+    },
+    {
+        "houseName": "zwrillya",
+        "price": "4457",
+        "location": "goa",
+        "rating": "3",
+        "photoUrl": "\\images\\house3.png",
+        "id": "0.413459273071602"
+    },
+    {
+        "houseName": "atlana",
+        "price": "2220",
+        "location": "agartala",
+        "rating": "3",
+        "photoUrl": "\\images\\house4.png",
+        "id": "0.3107182931968797"
     }
 ]

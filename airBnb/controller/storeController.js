@@ -13,7 +13,7 @@ exports.getIndex = (req, res, next) => {
 
 exports.getHomes = (req, res, next) => {
   Home.fetchAll((registeredHomes) => {
-    res.render("store/homePageList", {
+    res.render("store/homeList", {
       registeredHomes: registeredHomes,
       pageTitle: "Home List",
       currentPage: "Home",
@@ -52,7 +52,20 @@ exports.postAddToFavorite=(req,res,next)=>{
     }
     res.redirect("/favorites")
   });
-}
+};
+
+exports.postRemoveFavorite=(req,res,next)=>{
+
+  const homeId = req.params.homeId;
+
+  Favorite.deleteById(homeId,error=>{
+    if(error){
+      console.log(`error removing from favorite`,error);
+    }
+    res.redirect("/favorites")
+  });
+      
+};
 
 exports.getHomeDetails = (req, res, next) => {
   const homeId =req.params.homeId;
