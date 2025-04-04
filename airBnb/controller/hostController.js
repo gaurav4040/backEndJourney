@@ -1,9 +1,15 @@
-//commenting previous code which used in file writing database(fake database eg.home.json) ,new code for real database(sql,mongoDB)
+//commenting previous code which used in file writing database(fake database eg.home.json) ,new code for real database(sql)
+// ----- code for-----SQL and mongoDB is same(destructing not required)  ---diff for fileBased database
+//---- now commenting  code for SQL  
+
 
 const Home = require("../models/home");
 
+
+
+
 exports.getHostHomes = (req, res, next) => {
-  Home.fetchAll().then(([registeredHomes, fields]) => {
+  Home.fetchAll().then(registeredHomes => {
     res.render("host/hostHomeList", {
       registeredHomes: registeredHomes,
       pageTitle: "Host Home List",
@@ -12,7 +18,17 @@ exports.getHostHomes = (req, res, next) => {
   });
 };
 // exports.getHostHomes = (req, res, next) => {
+//   Home.fetchAll().then(([registeredHomes, fields]) => {
+//     res.render("host/hostHomeList", {
+//       registeredHomes: registeredHomes,
+//       pageTitle: "Host Home List",
+//       currentPage: "HostHomes",
+//     });
+//   });
+// };
+// exports.getHostHomes = (req, res, next) => {
 //   Home.fetchAll((registeredHomes) => {
+//     console.log('fetched sucessfully',registeredHomes);
 //     res.render("host/hostHomeList", {
 //       registeredHomes: registeredHomes,
 //       pageTitle: "Host Home List",
@@ -29,41 +45,41 @@ exports.getAddHome = (req, res, next) => {
   });
 };
 
-exports.getEditHome = (req, res, next) => {
-  const homeId = req.params.homeId;
-  const editing = req.query.editing === "true";
-
-  Home.findById(homeId).then(([homes]) => {
-    const home = homes[0];
-    if (!home) {
-      console.log(`home not found for editing`);
-      res.redirect("/host/hostHomeList");
-    }
-    res.render("host/editHome", {
-      home: home,
-      pageTitle: "Edit your Home",
-      currentPage: "HostHomes",
-      editing: editing,
-    });
-  });
-};
 // exports.getEditHome = (req, res, next) => {
 //   const homeId = req.params.homeId;
-//   const editing = req.query.editing==='true';
+//   const editing = req.query.editing === "true";
 
-//   Home.findById(homeId,home=>{
-//     if(!home){
+//   Home.findById(homeId).then(([homes]) => {
+//     const home = homes[0];
+//     if (!home) {
 //       console.log(`home not found for editing`);
-//       res.redirect("/host/hostHomeList")
+//       res.redirect("/host/hostHomeList");
 //     }
 //     res.render("host/editHome", {
-//       home:home,
+//       home: home,
 //       pageTitle: "Edit your Home",
 //       currentPage: "HostHomes",
-//       editing:editing
+//       editing: editing,
 //     });
 //   });
 // };
+exports.getEditHome = (req, res, next) => {
+  const homeId = req.params.homeId;
+  const editing = req.query.editing==='true';
+
+  Home.findById(homeId,home=>{
+    if(!home){
+      console.log(`home not found for editing`);
+      res.redirect("/host/hostHomeList")
+    }
+    res.render("host/editHome", {
+      home:home,
+      pageTitle: "Edit your Home",
+      currentPage: "HostHomes",
+      editing:editing
+    });
+  });
+};
 
 exports.postAddHome = (req, res, next) => {
   const home = new Home(
@@ -74,7 +90,9 @@ exports.postAddHome = (req, res, next) => {
     req.body.photoUrl,
     req.body.description
   );
-  home.save();
+  home.save().then(()=>{
+    console.log(`home saved successfully`);
+  });
   res.redirect("/host/host-home-list");
 };
 
@@ -86,10 +104,12 @@ exports.getPostEditHome = (req, res, next) => {
     req.body.rating,
     req.body.photoUrl,
     req.body.description,
-    req.body.id
+    req.body._id
   );
 
-  home.save();
+  home.save().then(result=>{
+    console.log('home updated',result);
+  });
   res.redirect("/host/host-home-list");
 };
 

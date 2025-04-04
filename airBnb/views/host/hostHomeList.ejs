@@ -32,10 +32,10 @@
                   $<%= home.price %>
                   <span class="text-xs text-gray-500 font-normal">/night</span>
                 </div>
-                <a href="/host/edit-home/<%=home.id%>?editing=true" class="bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-700 transition duration-300">
+                <a href="/host/edit-home/<%=home._id%>?editing=true" class="bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-700 transition duration-300">
                   edit
                 </a>
-                <form action="/host/delete-home/<%=home.id%>" method="POST">
+                <form action="/host/delete-home/<%=home._id%>" method="POST">
                   <button class="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-700 transition duration-300">
                     delete
                   </button>
