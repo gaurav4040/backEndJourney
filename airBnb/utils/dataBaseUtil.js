@@ -1,30 +1,33 @@
-const mongo = require('mongodb');
+//----------------------------no use of this mongoDB code , while using mongoose
+//--------------- this file is of ❌NO USE❌can be deleted if using mongose❌  
 
-const MongoClient=mongo.MongoClient;
+// const mongo = require('mongodb');
 
-const MONGO_URL = "mongodb+srv://root:root@airbnb.ljguy0q.mongodb.net/?retryWrites=true&w=majority&appName=airbnb";
+// const MongoClient=mongo.MongoClient;
 
-let _db;
+// const MONGO_URL = "mongodb+srv://root:root@airbnb.ljguy0q.mongodb.net/?retryWrites=true&w=majority&appName=airbnb";
 
-const mongoConnect=(callback)=>{
+// let _db;
 
-    MongoClient.connect(MONGO_URL).then(client=>{
-        _db = client.db('airbnb');
-        callback();
-    }).catch(error=>{
-        console.log(`error while connecting to mongo`,error);
-    });
-}
+// const mongoConnect=(callback)=>{
 
-const getDB=()=>{
-    if(!_db){
-        throw new Error('mongo not connected');
-    }
-    return _db;
-}
+//     MongoClient.connect(MONGO_URL).then(client=>{
+//         _db = client.db('airbnb');
+//         callback();
+//     }).catch(error=>{
+//         console.log(`error while connecting to mongo`,error);
+//     });
+// }
 
-exports.getDB=getDB;
-exports.mongoConnect=mongoConnect;
+// const getDB=()=>{
+//     if(!_db){
+//         throw new Error('mongo not connected');
+//     }
+//     return _db;
+// }
+
+// exports.getDB=getDB;
+// exports.mongoConnect=mongoConnect;
 
 /// -----------------------------commenting SQL Database now using mongo
 

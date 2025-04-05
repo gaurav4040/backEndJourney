@@ -1,32 +1,48 @@
-const {getDB} =require('../utils/dataBaseUtil');
-const { ObjectId } = require("mongodb");
+const mongoose = require('mongoose');
+
+const favSchema = mongoose.Schema({
+    houseId:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Home',
+        required:true,
+        unique:true
+    }
+
+})
+
+module.exports = mongoose.model('favorites',favSchema);
+
+//--------------------------- code while using mongoDB-------------------------------
+
+// const {getDB} =require('../utils/dataBaseUtil');
+// const { ObjectId } = require("mongodb");
 
 
-module.exports = class Favorite{
+// module.exports = class Favorite{
     
-    constructor(houseId) {
-        this.houseId = houseId;
+//     constructor(houseId) {
+//         this.houseId = houseId;
         
-      }
-     save(){
-        const db = getDB();
-        return db.collection("favorites").findOne({houseId:this.houseId}).then(existingFav=>{
-            if(!existingFav){
-                return db.collection("favorites").insertOne(this);
-            }
-            return Promise.resolve();
-        })
+//       }
+//      save(){
+//         const db = getDB();
+//         return db.collection("favorites").findOne({houseId:this.houseId}).then(existingFav=>{
+//             if(!existingFav){
+//                 return db.collection("favorites").insertOne(this);
+//             }
+//             return Promise.resolve();
+//         })
         
-    }
-    static getFavorites(){
-        const db = getDB();
-        return db.collection("favorites").find().toArray();
-    }
-    static deleteById(delHomeId){
-        const db = getDB();
-    return db.collection("favorites").deleteOne({ houseId:delHomeId});
-    }
-};
+//     }
+//     static getFavorites(){
+//         const db = getDB();
+//         return db.collection("favorites").find().toArray();
+//     }
+//     static deleteById(delHomeId){
+//         const db = getDB();
+//     return db.collection("favorites").deleteOne({ houseId:delHomeId});
+//     }
+// };
 
 
 
