@@ -1,0 +1,51 @@
+<%-include('../partials/head')%>
+</head>
+<body class="bg-black">
+    <%- include('../partials/nav') %>
+    <main class="h-[100vh] flex items-center justify-center  p-8">
+        <div class="bg-black p-10 rounded-2xl ring-2 ring-rose-600 w-full max-w-md transform transition-transform duration-300 hover:-translate-y-1">
+            <h1 class="text-3xl font-semibold text-white text-center mb-8 ">Welcome Back</h1>
+            <form action="/login" method="POST" class="space-y-6">
+                <div class="relative">
+                    <input 
+                        type="text" 
+                        id="email/username" 
+                        name="email/username" 
+                        placeholder=" "
+                        required
+                        class="bg-gray-600 text-white peer w-full px-4 py-3  rounded-lg focus:border-rose-500 focus:ring-2 focus:ring-rose-200 outline-none transition-all duration-200"
+                    >
+                    <label 
+                        for="email/username" 
+                        class="bg-gray-600 absolute left-4 top-1/2 -translate-y-1/2 text-white transition-all duration-200 pointer-events-none px-2 peer-focus:-translate-y-6 peer-focus:text-sm peer-focus:text-rose-500 peer-[:not(:placeholder-shown)]:-translate-y-6 peer-[:not(:placeholder-shown)]:text-sm peer-[:not(:placeholder-shown)]:text-rose-500"
+                    >
+                        email/username
+                    </label>
+                </div>
+                <div class="relative">
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder=" "
+                        required
+                        class="bg-gray-600 peer w-full px-4 py-3  text-white rounded-lg focus:border-rose-500 focus:ring-2 focus:ring-rose-200 outline-none transition-all duration-200"
+                    >
+                    <label 
+                        for="password" 
+                        class="bg-gray-600 absolute left-4 top-1/2 -translate-y-1/2 text-white transition-all duration-200 pointer-events-none px-2 peer-focus:-translate-y-6 peer-focus:text-sm peer-focus:text-rose-500 peer-[:not(:placeholder-shown)]:-translate-y-6 peer-[:not(:placeholder-shown)]:text-sm peer-[:not(:placeholder-shown)]:text-rose-500"
+                    >
+                        Password
+                    </label>
+                </div>
+                <button 
+                    type="submit" 
+                    class="w-full py-3 px-4 bg-transparent border-2 border-rose-700 text-rose-600 font-semibold rounded-lg hover:bg-rose-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-rose-700 focus:ring-offset-2 transform transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+                >
+                    Login
+                </button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

@@ -70,3 +70,17 @@ topic_5 == Introduction to Mongoose
                 using Mongoose for favorites
                 Fetching Relations
             }
+
+topic_6 == Cookies and Session
+            {
+                what are cookies
+                Adding login Functionality
+                checking login state
+                using a cookie
+                define the logout feature
+                problem with cookies
+                what are session
+                installing session package
+                creating a session
+                saving session in DB
+            }

@@ -1,55 +1,55 @@
 <%- include('../partials/head') %>
   </head>
-  <body>
+  <body class="bg-black">
     <%- include('../partials/nav') %>
-    <main class="container mx-auto mt-8 p-8 bg-white rounded-lg shadow-md">
-      <h1 class="text-3xl font-bold mb-6 text-center text-gray-800"><%= editing?"Edit":"Register"%> Your Home on AirBnB</h1>
+    <div class="container w-fit mx-auto mt-8 mb-20 p-8 bg-black border-2 border-gray-500 rounded-lg shadow-md">
+      <h1 class="text-3xl font-bold mb-6 text-center text-rose-600"><%= editing?"Edit":"Register"%> Your Home on AirBnB</h1>
       <form action="/host/<%=editing?"edit-home":"add-home"%>" method="POST" class="max-w-md mx-auto">
         <input type="hidden" name="id" value="<%=editing?home._id:''%>">
-        <input
+        <input 
           type="text"
           name="houseName"
           value="<%=editing?home.houseName:''%>"
           placeholder="Enter your House Name"
-          class="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+          class="w-full px-4 py-2 mb-4 bg-transparent border-2 border-gray-500 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-        <input
+        <input 
            type="number"
            name="price"
            value="<%=editing?home.price:''%>"
            placeholder="enter price per night"
-           class="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+           class="w-full px-4 py-2 mb-4 bg-transparent border-2 border-gray-500 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
            />
-           <input
+           <input 
            type="text"
            name="location"
            value="<%=editing?home.location:''%>"
            placeholder="enter location"
-           class="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+           class="w-full px-4 py-2 mb-4 bg-transparent border-2 border-gray-500 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
            />
-           <input
+           <input 
            type="number"
            step="0.1"
            name="rating"
            value="<%=editing?home.rating:''%>"
            placeholder="enter rating in no. of stars"
-           class="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+           class="w-full px-4 py-2 mb-4 bg-transparent border-2 border-gray-500 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
            />
-           <input
+           <input 
            type="text"
            name="photoUrl"
            value="<%=editing?home.photoUrl:''%>"
            placeholder="enter photo url"
-           class="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+           class="w-full px-4 py-2 mb-4 bg-transparent border-2 border-gray-500 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
            />
-           <textarea
+           <textarea 
              name="description"
              placeholder="Describe your Home"
-             class="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+             class="w-full px-4 py-2 mb-4 bg-transparent border-2 border-gray-500 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
              ><%=editing?home.description:''%></textarea>
 
-        <input type="submit" value="<%=editing?"Update Home":"Add Home" %>" class="w-full bg-red-700 text-white py-2 rounded-md hover:bg-grey-600 transition duration-300" />
+        <input type="submit" value="<%=editing?"Update Home":"Add Home" %>" class="w-full bg-transparent border-2 border-green-600  text-white py-2 rounded-md hover:bg-green-600  transition duration-300" />
       </form>
-    </main>
+    </div>
   </body>
 </html>
