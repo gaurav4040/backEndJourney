@@ -2,6 +2,8 @@ exports.notFoundPage=(req,res,next)=>{
     res.status(404).render('404Error',{
         pageTitle:'page not found',
         currentPage:'error',
-        isLoggedIn:req.isLoggedIn
+        isLoggedIn:req.isLoggedIn,
+        userName:req.session.userName,
+        Email:req.session.Email
     })
 };

@@ -1,16 +1,18 @@
-const mongoose = require('mongoose');
+// no use , we have linked favorites to user 
 
-const favSchema = mongoose.Schema({
-    houseId:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'Home',
-        required:true,
-        unique:true
-    }
+// const mongoose = require('mongoose');
 
-})
+// const favSchema = mongoose.Schema({
+//     houseId:{
+//         type:mongoose.Schema.Types.ObjectId,
+//         ref:'Home',
+//         required:true,
+//         unique:true
+//     }
 
-module.exports = mongoose.model('favorites',favSchema);
+// })
+
+// module.exports = mongoose.model('favorites',favSchema);
 
 //--------------------------- code while using mongoDB-------------------------------
 

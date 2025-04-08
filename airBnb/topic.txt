@@ -73,7 +73,7 @@ topic_5 == Introduction to Mongoose
 
 topic_6 == Cookies and Session
             {
-                what are cookies
+                what are cookiese
                 Adding login Functionality
                 checking login state
                 using a cookie
@@ -83,4 +83,18 @@ topic_6 == Cookies and Session
                 installing session package
                 creating a session
                 saving session in DB
+            }
+
+topic_7 == Authentication & Authorization
+            {
+                what is Authentication
+                what is Authorization
+                Session based Authentication
+                Authentication vs Authorization
+                SignUp UI
+                using Express validator
+                Adding User Model
+                Encrypting Password
+                Implementing login
+                Adding User Function
             }

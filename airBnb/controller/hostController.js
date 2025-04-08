@@ -11,7 +11,9 @@ exports.getHostHomes = (req, res, next) => {
       registeredHomes: registeredHomes,
       pageTitle: "Host Home List",
       currentPage: "HostHomes",
-      isLoggedIn:req.isLoggedIn
+      isLoggedIn:req.isLoggedIn,
+      userName:req.session.userName,
+      Email:req.session.Email
     });
   });
 };
@@ -21,7 +23,9 @@ exports.getAddHome = (req, res, next) => {
     pageTitle: "Add home to airbnb",
     currentPage: "addHome",
     editing: false,
-    isLoggedIn:req.isLoggedIn
+    isLoggedIn:req.isLoggedIn,
+    userName:req.session.userName,
+    Email:req.session.Email
   });
 };
 
@@ -39,7 +43,9 @@ exports.getEditHome = (req, res, next) => {
       pageTitle: "Edit your Home",
       currentPage: "HostHomes",
       editing:editing,
-      isLoggedIn:req.isLoggedIn
+      isLoggedIn:req.isLoggedIn,
+      userName:req.session.userName,
+      Email:req.session.Email
     });
   });
 };
@@ -51,7 +57,9 @@ exports.postAddHome = (req, res, next) => {
     location:req.body.location,
     rating:req.body.rating,
     photoUrl:req.body.photoUrl,
-    description:req.body.description
+    description:req.body.description,
+    userName:req.session.userName,
+    Email:req.session.Email
   });
   home.save().then(()=>{
     console.log(`home saved successfully`);

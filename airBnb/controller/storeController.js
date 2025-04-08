@@ -1,7 +1,7 @@
 
-const Favorite = require("../models/favorite");
 const Home = require("../models/home");
 const {ObjectId} = require('mongoose');
+const User = require("../models/user");
 
 exports.getIndex = (req, res, next) => {
 
@@ -10,7 +10,9 @@ exports.getIndex = (req, res, next) => {
       registeredHomes: registeredHomes,
       pageTitle: "airbnb home",
       currentPage: "index",
-      isLoggedIn:req.isLoggedIn
+      isLoggedIn:req.isLoggedIn,
+      userName:req.session.userName,
+      Email:req.session.Email
     });
   });
 };
@@ -21,7 +23,9 @@ exports.getHomes = (req, res, next) => {
       registeredHomes: registeredHomes,
       pageTitle: "Home List",
       currentPage: "Home",
-      isLoggedIn:req.isLoggedIn
+      isLoggedIn:req.isLoggedIn,
+      userName:req.session.userName,
+      Email:req.session.Email
     });
   });
 };
@@ -30,55 +34,91 @@ exports.getBookings = (req, res, next) => {
   res.render("store/booking", {
     pageTitle: "my bookings",
     currentPage: "bookings",
-    isLoggedIn:req.isLoggedIn
+    isLoggedIn:req.isLoggedIn,
+    userName:req.session.userName,
+    Email:req.session.Email
   });
 };
 
-exports.getFavoriteList=(req, res, next) => {
-  
-  Favorite.find().populate('houseId').then(favorites=>{
-    const favoriteHomes = favorites.map(fav=>fav.houseId)
+exports.getFavoriteList=async (req, res, next) => {
+  const userId = req.session.userName ? req.session.userName._id : req.session.Email._id;
+
+  const user = await User.findById(userId).populate('favorites')
  
       res.render("store/favoriteList", {
-        favoriteHomes: favoriteHomes,
+        favoriteHomes: user.favorites,
         pageTitle: "my favorites",
         currentPage: "favorites",
-        isLoggedIn:req.isLoggedIn
-      });
-    });
+        isLoggedIn:req.isLoggedIn,
+        userName:req.session.userName,
+        Email:req.session.Email
+      }); 
+
+  // Favorite.find().populate('houseId').then(favorites=>{
+  //   const favoriteHomes = favorites.map(fav=>fav.houseId)
+ 
+  //     res.render("store/favoriteList", {
+  //       favoriteHomes: favoriteHomes,
+  //       pageTitle: "my favorites",
+  //       currentPage: "favorites",
+  //       isLoggedIn:req.isLoggedIn,
+  //       userName:req.session.userName,
+  //       Email:req.session.Email
+  //     });
+  //   });
 };
 
-exports.postAddToFavorite = (req, res, next) => {
+exports.postAddToFavorite =async (req, res, next) => {
   const homeId=req.body.id;
+  const userId = req.session.userName ? req.session.userName._id : req.session.Email._id;
 
-  Favorite.findOne({houseId:homeId}).then((fav)=>{
-    if(fav){
-      console.log('already Marked');
-      return res.redirect('/favorites');
-    }
-    else{
-      fav=new Favorite({houseId:homeId})
-      fav.save().then(result=>{
-        console.log('added successfully : ',result);
-        res.redirect('/favorites');
-      })
-    }
-  }).catch(error=>{
-    console.log('error while adding to fav : ',error);
-  })
+  const user = await User.findById(userId).populate('favorites');
+
+  if(!user.favorites.includes(homeId)){
+    user.favorites.push(homeId);
+    await user.save();
+  }
+
+  res.redirect("/favorites"); 
+
+  // Favorite.findOne({houseId:homeId}).then((fav)=>{
+  //   if(fav){
+  //     console.log('already Marked');
+  //     return res.redirect('/favorites');
+  //   }
+  //   else{
+  //     fav=new Favorite({houseId:homeId})
+  //     fav.save().then(result=>{
+  //       console.log('added successfully : ',result);
+  //       res.redirect('/favorites');
+  //     })
+  //   }
+  // }).catch(error=>{
+  //   console.log('error while adding to fav : ',error);
+  // })
 
 };
 
-exports.postRemoveFavorite = (req, res, next) => {
+exports.postRemoveFavorite =async (req, res, next) => {
   const homeId = req.params.homeId;
+  const userId = req.session.userName ? req.session.userName._id : req.session.Email._id;
 
-  Favorite.findOneAndDelete({houseId:homeId}).then(result=>{
-    console.log('favorite removed : ',result);
-  }).catch(error=>{
-    console.log('error while removing fav : ',error);
-  }).finally(()=>{
-    res.redirect('/favorites');
-  });
+  const user = await User.findById(userId).populate('favorites');
+
+  if(user.favorites.includes(homeId)){
+    user.favorites = user.favorites.filter(fav=>fav!==homeId);
+    await user.save();
+  }
+  
+  res.redirect('/favorites');
+
+  // Favorite.findOneAndDelete({houseId:homeId}).then(result=>{
+  //   console.log('favorite removed : ',result);
+  // }).catch(error=>{
+  //   console.log('error while removing fav : ',error);
+  // }).finally(()=>{
+  //   res.redirect('/favorites');
+  // });
  
 };
 
@@ -95,7 +135,9 @@ exports.getHomeDetails = (req, res, next) => {
         home: home,
         pageTitle: "Home Details",
         currentPage: "Home",
-        isLoggedIn:req.isLoggedIn
+        isLoggedIn:req.isLoggedIn,
+        userName:req.session.userName,
+        Email:req.session.Email
       });
     }
   });
