@@ -1,28 +1,24 @@
-
-const mongoose = require('mongoose');
-
+const mongoose = require("mongoose");
 
 const homeSchema = new mongoose.Schema({
-    houseName :{
-      type:String,
-      required:true
-    },
-    price :{
-      type:Number,
-      required:true
-    },
-    location :{
-      type:String,
-      required:true
-
-    },
-    rating :{
-      type:Number,
-      required:true
-    },
-    photoUrl:String,
-    description :String
-    
+  houseName: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+  location: {
+    type: String,
+    required: true,
+  },
+  rating: {
+    type: Number,
+    required: true,
+  },
+  photoUrl: String,
+  description: String,
 });
 
 // homeSchema.pre('findOneAndDelete',async function(next){
@@ -31,13 +27,12 @@ const homeSchema = new mongoose.Schema({
 //   next();
 // })
 
-module.exports = mongoose.model('Home',homeSchema); 
+module.exports = mongoose.model("Home", homeSchema);
 
 //--------------------------- code while using mongoDB-------------------------------
 
 // const { ObjectId } = require("mongodb");
 // const { getDB } = require("../utils/dataBaseUtil");
-
 
 // module.exports = class Home {
 //   constructor(houseName, price, location, rating, photoUrl, description, id) {
@@ -63,7 +58,7 @@ module.exports = mongoose.model('Home',homeSchema);
 //             photoUrl : this.photoUrl,
 //             description : this.description
 //           }
-//     if(this._id){//update 
+//     if(this._id){//update
 //       return db.collection("homes").updateOne({ _id:new ObjectId(String(this._id))},{$set:updatedFields});
 //     }else{// insert
 //       return db.collection("homes").insertOne(this);
@@ -143,7 +138,6 @@ module.exports = mongoose.model('Home',homeSchema);
 //     return db.execute("DELETE FROM homes WHERE id=?", [homeId]);
 //   }
 // };
-
 
 //--------------------------------------------------------------------------------------
 

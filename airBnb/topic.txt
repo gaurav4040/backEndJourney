@@ -98,3 +98,33 @@ topic_7 == Authentication & Authorization
                 Implementing login
                 Adding User Function
             }
+
+topic_8 == File Upload & Download
+            {
+                Adding a File Picker
+                Creating Multipart from
+                Handling Multipart Form data
+                Saving Image files
+                Custom File Names
+                Restricting Upload File Types
+                Handling Edits
+                Serving Saved data
+                Serving Files after Authentication
+                Deleting Files
+            }
+
+topic_9 == Rest API / JSON request
+            {
+                What are Async request
+                What are REST APIs
+                Decoupling Frontend & Backend
+                Routes & HTTP Methods
+                REST Core Concepts
+                First API Todo App
+                API for Fetch Items
+                API for Deleting Items
+                Improving UI Elements
+                Adding complete Item Functionality
+                Deploying React App
+            }
+

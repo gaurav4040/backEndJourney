@@ -1,19 +1,17 @@
-//------------------code for mongoose 
+//------------------code for mongoose
 
+const fs = require('fs')
 const Home = require("../models/home");
 
-
-
-
 exports.getHostHomes = (req, res, next) => {
-  Home.find().then(registeredHomes => {
+  Home.find().then((registeredHomes) => {
     res.render("host/hostHomeList", {
       registeredHomes: registeredHomes,
       pageTitle: "Host Home List",
       currentPage: "HostHomes",
-      isLoggedIn:req.isLoggedIn,
-      userName:req.session.userName,
-      Email:req.session.Email
+      isLoggedIn: req.isLoggedIn,
+      userName: req.session.userName,
+      Email: req.session.Email,
     });
   });
 };
@@ -23,45 +21,46 @@ exports.getAddHome = (req, res, next) => {
     pageTitle: "Add home to airbnb",
     currentPage: "addHome",
     editing: false,
-    isLoggedIn:req.isLoggedIn,
-    userName:req.session.userName,
-    Email:req.session.Email
+    isLoggedIn: req.isLoggedIn,
+    userName: req.session.userName,
+    Email: req.session.Email,
   });
 };
 
 exports.getEditHome = (req, res, next) => {
   const homeId = req.params.homeId;
-  const editing = req.query.editing==='true';
+  const editing = req.query.editing === "true";
 
-  Home.findById(homeId).then(home=>{
-    if(!home){
+  Home.findById(homeId).then((home) => {
+    if (!home) {
       console.log(`home not found for editing`);
-      res.redirect("/host/hostHomeList")
+      res.redirect("/host/hostHomeList");
     }
     res.render("host/editHome", {
-      home:home,
+      home: home,
       pageTitle: "Edit your Home",
       currentPage: "HostHomes",
-      editing:editing,
-      isLoggedIn:req.isLoggedIn,
-      userName:req.session.userName,
-      Email:req.session.Email
+      editing: editing,
+      isLoggedIn: req.isLoggedIn,
+      userName: req.session.userName,
+      Email: req.session.Email,
     });
   });
 };
 
 exports.postAddHome = (req, res, next) => {
+
   const home = new Home({
-    houseName:req.body.houseName,
-    price:req.body.price,
-    location:req.body.location,
-    rating:req.body.rating,
-    photoUrl:req.body.photoUrl,
-    description:req.body.description,
-    userName:req.session.userName,
-    Email:req.session.Email
+    houseName: req.body.houseName,
+    price: req.body.price,
+    location: req.body.location,
+    rating: req.body.rating,
+    photoUrl: req.file.path, //---------------------- exception because of file handling
+    description: req.body.description,
+    userName: req.session.userName,
+    Email: req.session.Email,
   });
-  home.save().then(()=>{
+  home.save().then(() => {
     console.log(`home saved successfully`);
   });
   res.redirect("/host/host-home-list");
@@ -69,24 +68,37 @@ exports.postAddHome = (req, res, next) => {
 
 exports.getPostEditHome = (req, res, next) => {
 
-  Home.findById(req.body.id).then((home)=>{
-    home.houseName=req.body.houseName;
-    home.price=req.body.price;
-    home.location=req.body.location;
-    home.rating=req.body.rating;
-    home.photoUrl=req.body.photoUrl;
-    home.description=req.body.description;
-    
-    home.save().then(result=>{
-      console.log('home updated',result);
-    }).catch(err=>{
-      console.log('error while updating home : ',err);
+  Home.findById(req.body.id)
+    .then((home) => {
+      home.houseName = req.body.houseName;
+      home.price = req.body.price;
+      home.location = req.body.location;
+      home.rating = req.body.rating;
+      if(req.file){
+        fs.unlink(home.photoUrl,(err)=>{
+          if(err){
+            console.log('error while unLinking photo',err);
+          }
+        });
+        home.photoUrl = req.file.path;//---------------------- exception because of file handling
+      }
+      home.description = req.body.description;
+
+
+
+      home
+        .save()
+        .then((result) => {
+          console.log("home updated", result);
+        })
+        .catch((err) => {
+          console.log("error while updating home : ", err);
+        });
+      res.redirect("/host/host-home-list");
+    })
+    .catch((err) => {
+      console.log("error while finding home : ", err);
     });
-    res.redirect("/host/host-home-list");
-  }).catch(err=>{
-    console.log('error while finding home : ',err);
-  })
-  
 };
 
 exports.postDeleteHome = (req, res, next) => {
@@ -102,15 +114,10 @@ exports.postDeleteHome = (req, res, next) => {
 
 //commenting previous code which used in file writing database(fake database eg.home.json) ,new code for real database(sql)
 // ----- code for-----SQL and mongoDB is same(destructing not required)  ---diff for fileBased database
-//---- now commenting  code for SQL  
+//---- now commenting  code for SQL
 //---- now commenting  code for mongoDB
 
-
-
 // const Home = require("../models/home");
-
-
-
 
 // exports.getHostHomes = (req, res, next) => {
 //   Home.fetchAll().then(registeredHomes => {
