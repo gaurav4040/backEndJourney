@@ -1,0 +1,60 @@
+<%- include('../partials/head') %>
+  </head>
+  <body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
+    <%- include('../partials/nav') %>
+    <div class="container w-fit mx-auto mt-8 mb-20 p-8 bg-white/5 backdrop-blur-sm border-2 border-indigo-500/30 rounded-lg shadow-md shadow-indigo-500/20">
+      <h1 class="text-3xl font-bold mb-6 text-center text-indigo-200"><%= editing?"Edit":"Register"%> Your Home on AirBnB</h1>
+      <form action="/host/<%=editing?"edit-home":"add-home"%>" method="POST" enctype="multipart/form-data" class="max-w-md mx-auto">
+        <input type="hidden" name="id" value="<%=editing?home._id:''%>">
+        <input 
+          type="text"
+          name="houseName"
+          value="<%=editing?home.houseName:''%>"
+          placeholder="Enter your House Name"
+          class="w-full px-4 py-2 mb-4 bg-white/10 border-2 border-indigo-500/30 text-indigo-200 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+
+        <input 
+           type="number"
+           name="price"
+           value="<%=editing?home.price:''%>"
+           placeholder="Enter price per night"
+           min="0"
+           step="1"
+           class="w-full px-4 py-2 mb-4 bg-white/10 border-2 border-indigo-500/30 text-indigo-200 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+           />
+           <input 
+           type="text"
+           name="location"
+           value="<%=editing?home.location:''%>"
+           placeholder="enter location"
+           class="w-full px-4 py-2 mb-4 bg-white/10 border-2 border-indigo-500/30 text-indigo-200 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+           />
+           <input 
+           type="number"
+           min="0"
+           step="0.1"
+           name="rating"
+           value="<%=editing?home.rating:''%>"
+           placeholder="enter rating in no. of stars"
+           class="w-full px-4 py-2 mb-4 bg-white/10 border-2 border-indigo-500/30 text-indigo-200 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+           />
+           <input 
+             type="file"
+             name="photoUrl"
+             accept="image/jpg,image/jpeg,image/png"
+             value="<%=editing?home.photoUrl:''%>"
+             placeholder="Upload home photos"
+             class="w-full px-4 py-2 mb-4 bg-white/10 border-2 border-indigo-500/30 text-indigo-200 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 file:mr-4 file:py-1 file:px-4 file:rounded-md file:border-0 file:bg-white/10 file:text-white hover:file:bg-indigo-700 file:transition file:duration-300"
+           />
+           <textarea 
+             name="description"
+             placeholder="Describe your Home"
+             class="w-full px-4 py-2 mb-4 bg-white/10 border-2 border-indigo-500/30 text-indigo-200 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+             ><%=editing?home.description:''%></textarea>
+
+        <input type="submit" value="<%=editing?"Update Home":"Add Home" %>" class="w-full bg-transparent border-2 border-indigo-700 text-white py-2 rounded-md hover:bg-indigo-700 transition duration-300" />
+      </form>
+    </div>
+  </body>
+</html>

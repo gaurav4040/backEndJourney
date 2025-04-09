@@ -1,0 +1,85 @@
+<%-include('../partials/head')%>
+</head>
+<body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
+    <%- include('../partials/nav') %>
+    <main class="h-[100vh] flex items-center justify-center p-8">
+        <div class="bg-white/5 backdrop-blur-sm p-10 rounded-2xl ring-2 ring-indigo-500/30 w-full max-w-md transform transition-all duration-300 hover:-translate-y-1">
+            <h1 class="text-3xl font-semibold text-indigo-200 text-center mb-8 animate-fade-in">Welcome Back</h1>
+            <form action="/login" method="POST" class="space-y-6">
+                <%- include('../partials/authError') %>
+                <div class="relative animate-fade-in-up delay-100">
+                    <input 
+                        type="text" 
+                        id="email_username"  
+                        name="email_username" 
+                        placeholder=" "
+                        value="<%= oldInput.email_username ? oldInput.email_username:'' %>"
+                        required
+                        class="bg-white/10 text-indigo-200 peer w-full px-4 py-3 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all duration-200"
+                    >
+                    <label 
+                        for="email_username" 
+                        class="bg-transparent absolute left-4 top-1/2 -translate-y-1/2 text-indigo-200 transition-all duration-200 pointer-events-none px-2 peer-focus:-translate-y-6 peer-focus:text-sm peer-focus:text-indigo-400 peer-[:not(:placeholder-shown)]:-translate-y-6 peer-[:not(:placeholder-shown)]:text-sm peer-[:not(:placeholder-shown)]:text-indigo-400"
+                    >
+                        email/username
+                    </label>
+                </div>
+                <div class="relative animate-fade-in-up delay-200">
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder=" "
+                        required
+                        class="bg-white/10 peer w-full px-4 py-3 text-indigo-200 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all duration-200"
+                    >
+                    <label 
+                        for="password" 
+                        class="bg-transparent absolute left-4 top-1/2 -translate-y-1/2 text-indigo-200 transition-all duration-200 pointer-events-none px-2 peer-focus:-translate-y-6 peer-focus:text-sm peer-focus:text-indigo-400 peer-[:not(:placeholder-shown)]:-translate-y-6 peer-[:not(:placeholder-shown)]:text-sm peer-[:not(:placeholder-shown)]:text-indigo-400"
+                    >
+                        Password
+                    </label>
+                </div>
+                <div class="relative animate-fade-in-up delay-300">
+                    <p class="text-indigo-200"> user type :-</p>
+                    <label class="text-indigo-200 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-600 focus:border-">
+                        <input type="radio" name="userType" value="guest" id="guest" checked/>
+                        <span class="m-1">Guest</span>
+                    </label>
+                    <label class="text-indigo-200 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-600 focus:border-">
+                        <input type="radio" name="userType" value="host" id="host" checked/>
+                        <span class="m-1">Host</span>
+                    </label>
+                </div>
+                <div class="text-indigo-300 relative animate-fade-in-up delay-300">
+                    <input type="checkbox" name="terms" id="terms" required/>
+                    <label for="terms">I agree to terms and conditions</label>
+                </div>
+                <button 
+                    type="submit" 
+                    class="relative animate-fade-in-up delay-400 w-full py-3 px-4 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-offset-2 transform transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+                >
+                    Login
+                </button>
+            </form>
+            <p class="text-indigo-200 text-center mt-6 animate-fade-in-up delay-500">
+                Don't have an account? 
+                <a href="/signUp" class="text-indigo-400 hover:text-indigo-300 transition-colors duration-200">SignUp</a>
+            </p>
+        </div>
+    </main>
+    <script>
+        // Add Tailwind animation classes
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.animate-fade-in-up');
+            elements.forEach((el, index) => {
+                el.classList.add('opacity-0', 'translate-y-4');
+                setTimeout(() => {
+                    el.classList.add('transition-all', 'duration-500', 'ease-out');
+                    el.classList.remove('opacity-0', 'translate-y-4');
+                }, 100 * index);
+            });
+        });
+    </script>
+</body>
+</html>

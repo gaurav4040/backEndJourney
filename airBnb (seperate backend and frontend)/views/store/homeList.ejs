@@ -1,0 +1,53 @@
+<%- include('../partials/head') %>
+  </head>
+  <body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
+    <%- include('../partials/nav') %>
+    <main class="container mx-auto bg-white/5 backdrop-blur-sm shadow-md shadow-indigo-500/20 rounded-lg p-6 mt-8 max-w-7xl">
+      <h2 class="text-2xl text-indigo-200 font-bold text-center mb-4">
+        Here are our registered homes
+      </h2>
+      <div class="bg-transparent grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <% registeredHomes.forEach((home) => { %>
+          <div class="bg-white/10 backdrop-blur-sm border-2 border-indigo-500/30 rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
+            <div class="relative p-2">
+              <img src="<%= home.photoUrl %>" alt="<%= home.houseName %>" class="w-full h-64 object-cover rounded-lg">
+              <div class="absolute top-2 right-2 bg-indigo-900/80 px-3 py-1 rounded-lg shadow text-sm">
+                <span class="text-yellow-400"><%= home.rating %>⭐</span>
+              </div>
+            </div>
+            
+            <div class="p-4">
+              <h3 class="text-lg font-semibold text-indigo-200 mb-2"><%= home.houseName %></h3>
+              
+              <div class="flex items-center mb-3">
+                <svg class="w-5 h-5 text-indigo-300 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+                <span class="text-indigo-200 text-sm"><%= home.location %></span>
+              </div>
+              
+              <div class="mt-4 flex justify-between items-center">
+                <div class="text-xl font-bold text-pink-400">
+                  $<%= home.price %>
+                  <span class="text-sm text-indigo-200 font-normal">/night</span>
+                </div>
+                <div class="flex space-x-2">
+                  <a href="/homes/<%= home._id%>" class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-700 transition duration-300">
+                    Details
+                  </a>
+                  <button class="bg-pink-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-pink-700 transition duration-300">
+                    Book
+                  </button>
+                </div>
+              </div>
+              <div class="mt-3">
+                <%- include('../partials/favorite',{home:home}) %>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </main>
+  </body>
+</html>

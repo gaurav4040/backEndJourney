@@ -1,0 +1,130 @@
+add-on topics:-
+
+topic_1 == MVC(model view controller)
+            {
+                separation of concerns
+                adding first controller
+                adding all controllers
+                adding 404 controller
+                adding models
+                writing data to files
+                nodemon causing problems
+                reading data from files
+            }
+
+
+topic_2 == Dynamic Path & Model deep-dive
+            {
+                what are dynamic paths
+                showing real home data
+                adding favorites feature
+                adding favorites model
+                edit home:adding feature skeleton
+                edit home:showing existing data
+                edit home:handing edit request
+                adding delete feature
+                remove home from favorites
+            }
+
+
+topic_3 == Introduction to SQL
+            {
+                what is DB
+                Introduction to SQL DB
+                Introduction to NoSQL DB
+                SQL vs NoSQL
+                Installing MySQL
+                connecting App to DB
+                creating homes Table
+                querying homes in App
+                Adding DB in Models
+                Adding Home in Models
+                Implementing Model using Where
+            }
+
+topic_4 == Introduction to MongoDB
+            {
+                what is MongoDB
+                setting up MongoDB
+                Installing MongoDB Driver
+                Creating MongoDB Connection
+                saving a Home
+                Install MongoDB Compass
+                Install MongoDB for VSCode
+                Fetching all Home
+                Fetching one Home
+                Supporting Edit & delete
+                Adding MongoDB to Favorite
+            }
+
+topic_5 == Introduction to Mongoose
+            {
+                what is Mongoose
+                setting up Mongoose
+                create Home Schema
+                saving Home Using Mongoose
+                Fetching Homes
+                Fetching one Home
+                Editing a Home
+                Delete a Home
+                using Mongoose for favorites
+                Fetching Relations
+            }
+
+topic_6 == Cookies and Session
+            {
+                what are cookiese
+                Adding login Functionality
+                checking login state
+                using a cookie
+                define the logout feature
+                problem with cookies
+                what are session
+                installing session package
+                creating a session
+                saving session in DB
+            }
+
+topic_7 == Authentication & Authorization
+            {
+                what is Authentication
+                what is Authorization
+                Session based Authentication
+                Authentication vs Authorization
+                SignUp UI
+                using Express validator
+                Adding User Model
+                Encrypting Password
+                Implementing login
+                Adding User Function
+            }
+
+topic_8 == File Upload & Download
+            {
+                Adding a File Picker
+                Creating Multipart from
+                Handling Multipart Form data
+                Saving Image files
+                Custom File Names
+                Restricting Upload File Types
+                Handling Edits
+                Serving Saved data
+                Serving Files after Authentication
+                Deleting Files
+            }
+
+topic_9 == Rest API / JSON request
+            {
+                What are Async request
+                What are REST APIs
+                Decoupling Frontend & Backend
+                Routes & HTTP Methods
+                REST Core Concepts
+                First API Todo App
+                API for Fetch Items
+                API for Deleting Items
+                Improving UI Elements
+                Adding complete Item Functionality
+                Deploying React App
+            }
+
